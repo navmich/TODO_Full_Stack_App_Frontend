@@ -14,3 +14,4 @@ deploy:
   provider: firebase
   token: "1//09Z6TGzFxDZT1CgYIARAAGAkSNwF-L9IrZ2QpDCkHDlnrH3C-o9a3WxzIPHOy3vRmBMAGRS9ohxjhkyYj4x2g7AZwwYLvYWhn9s0"
     secure: ""
+    
