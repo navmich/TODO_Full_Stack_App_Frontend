@@ -1,0 +1,57 @@
+<h1>My Todo's</h1>
+
+<div class="alert alert-success" *ngIf="messageDeleted">
+  {{ messageDeleted }}
+</div>
+<div class="alert alert-success" *ngIf="messageAllDone">
+  {{ messageAllDone }}
+</div>
+
+<div class="container">
+  <table class="table" *ngIf="todos.length">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Target Date</th>
+        <!-- <th>is Completed</th> -->
+        <th>Detail</th>
+        <th>Detail (dialog)</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <!-- style.background-color="{{ setRowBackgroundColor(todo.targetDate) }}" -->
+    <tbody>
+      <tr *ngFor="let todo of todos.value" [appHighlightRow]="todo.targetDate">
+        <td>{{ todo.title }}</td>
+        <td>
+          {{ todo.targetDate | date: 'd.M.yyyy' }}
+        </td>
+        <!-- <td>{{ todo.done }}</td> -->
+        <td>
+          <button class="btn btn-success" (click)="updateTodo(todo.id)">
+            Detail (page)
+          </button>
+        </td>
+        <td>
+          <button class="btn btn-success" (click)="openDialog(todo.id)">
+            Detail (dialog)
+          </button>
+        </td>
+        <td>
+          <button
+            class="btn btn-warning"
+            (click)="deleteTodo(todo.id, todo.title)"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="row">
+    <button class="btn btn-success" (click)="addTodo()">Add</button>
+    <button class="btn btn-success" (click)="addTodoDialog()">
+      Add (dialog)
+    </button>
+  </div>
+</div>

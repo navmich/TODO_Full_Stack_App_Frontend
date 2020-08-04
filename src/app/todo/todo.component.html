@@ -1,0 +1,47 @@
+<div class="container">
+  <ng-container *ngTemplateOutlet="warningMessages"></ng-container>
+
+  <form [formGroup]="fg" (ngSubmit)="onSubmit()">
+    <fieldset class="form-group">
+      <label>Title</label>
+      <input
+        class="form-control"
+        type="text"
+        name="title"
+        formControlName="title"
+      />
+    </fieldset>
+    <fieldset class="form-group">
+      <label>Description</label>
+      <textarea
+        class="form-control"
+        type="text"
+        name="description"
+        formControlName="description"
+      ></textarea>
+    </fieldset>
+    <fieldset class="form-group">
+      <label>Target Date</label>
+      <input
+        class="form-control"
+        type="date"
+        min="{{ TODAYS_DATE }}"
+        name="targetDate"
+        formControlName="targetDate"
+      />
+    </fieldset>
+
+    <button class="btn btn-success" type="submit">
+      Save
+    </button>
+    <button class="btn btn-default" type="button" (click)="onCancel()">
+      Cancel
+    </button>
+  </form>
+</div>
+
+<ng-template #warningMessages>
+  <div class="alert alert-warning" *ngIf="isFormInvalid()">
+    {{ pickUpWarningMessage() }}
+  </div>
+</ng-template>
