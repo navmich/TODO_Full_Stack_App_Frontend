@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { HelloWorldBean } from './data/welcome-data.service';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { API_URL } from '../app.constants';
+import { API_URL, API_URL_HEROKU } from '../app.constants';
 
 export const TOKEN = 'token';
 export const AUTHENTICATED_USER = 'authenticatedUser';
@@ -19,7 +19,7 @@ export class BasicAuthenticationService {
     password
   ): Observable<AuthenticationBean> {
     return this.http
-      .post<any>(`${API_URL}/authenticate`, { username, password })
+      .post<any>(`${API_URL_HEROKU}/authenticate`, { username, password })
       .pipe(
         map((data) => {
           sessionStorage.setItem(AUTHENTICATED_USER, username);
@@ -28,6 +28,7 @@ export class BasicAuthenticationService {
         })
       );
   }
+  // testing comment
   // testing comment
   executeAuthenticationService(
     username,
@@ -40,15 +41,18 @@ export class BasicAuthenticationService {
       Authorization: basicAuthHeaderString,
     });
 
-    return this.http
-      .get<AuthenticationBean>(`${API_URL}/basicauth`, { headers })
-      .pipe(
-        map((data) => {
-          sessionStorage.setItem(AUTHENTICATED_USER, username);
-          sessionStorage.setItem(TOKEN, basicAuthHeaderString);
-          return data;
-        })
-      );
+    return (
+      this.http
+        // .get<AuthenticationBean>(`${API_URL}/basicauth`, { headers })
+        .get<AuthenticationBean>(`${API_URL_HEROKU}/basicauth`, { headers })
+        .pipe(
+          map((data) => {
+            sessionStorage.setItem(AUTHENTICATED_USER, username);
+            sessionStorage.setItem(TOKEN, basicAuthHeaderString);
+            return data;
+          })
+        )
+    );
   }
 
   getAuthenticatedUser() {
