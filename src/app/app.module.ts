@@ -6,7 +6,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './welcome/welcome.component';
-import { SecondWelcomeComponent } from './second-welcome/second-welcome.component';
 import { LoginComponent } from './login/login.component';
 import { ErrorComponent } from './error/error.component';
 import { ListTodosComponent } from './list-todos/list-todos.component';
@@ -23,8 +22,7 @@ import { HighlightRowDirective } from './directive/highlight-row.directive';
 @NgModule({
   declarations: [
     AppComponent,
-    WelcomeComponent,
-    SecondWelcomeComponent,
+    WelcomeComponent,    
     LoginComponent,
     ErrorComponent,
     ListTodosComponent,

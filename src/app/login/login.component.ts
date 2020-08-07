@@ -27,26 +27,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {}
 
-  handleBasicAuthLogin() {
-    this.basicAuthenticationService
-      .executeAuthenticationService(
-        this.fg.get('username').value,
-        this.fg.get('password').value
-      )
-      .subscribe(
-        (data) => {
-          console.log('Message from backend (success): ' + data.message);
-          console.log(data);
-          this.isValid = true;
-          this.router.navigate(['welcome', this.fg.get('username').value]);
-        },
-        (error) => {
-          console.log('Message from backend (error): ' + error);
-          this.isValid = false;
-        }
-      );
-  }
-
   handleJWTAuthLogin() {
     this.basicAuthenticationService
       .executeJWTAuthenticationService(

@@ -12,21 +12,12 @@ import { TodoDialogComponent } from '../todo/dialog/todo-dialog/todo-dialog.comp
   styleUrls: ['./list-todos.component.css'],
 })
 export class ListTodosComponent implements OnInit {
-  // todos: Todo[];
   todos: FormArray = new FormArray([]);
   name: string;
   todoDataService: TodoDataService;
   messageDeleted: string;
   messageAllDone: string;
   matDialog: MatDialog;
-
-  // displayedColumns: string[] = [
-  //   'description',
-  //   'targetDate',
-  //   'isCompleted',
-  //   'update',
-  //   'delete',
-  // ];
 
   constructor(
     private router: Router,
